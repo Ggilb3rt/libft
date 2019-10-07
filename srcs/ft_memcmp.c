@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:11:43 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/07 18:44:55 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/07 19:28:29 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/07 20:04:47 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const char *ps;
+	const char	*ps1;
+	const char	*ps2;
+	int c;
 
-	ps = s;
-	while (n--)
+	ps1 = s1;
+	ps2 = s2;
+	c = 0;
+	while (n > 0)
 	{
-		if (*ps != c)
-			ps++;
-		else
-			return ((void *)ps);
+		if (*ps1 != *ps2)
+		{
+			printf("ps1 > ps2 ;\n ps1 == %s ; ps2 == %s \n", ps1, ps2);
+			c = ps1-ps2;
+			return (c);
+		}
+		ps1++;
+		ps2++;
+		n--;
 	}
-	return (0);
+	return (c);
 }

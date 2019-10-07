@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:11:43 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/07 18:44:55 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/07 19:07:49 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/07 19:21:42 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int		isalpha(int c)
 {
-	const char *ps;
+	char *v;
 
-	ps = s;
-	while (n--)
-	{
-		if (*ps != c)
-			ps++;
-		else
-			return ((void *)ps);
-	}
-	return (0);
+	v = c;
+	if ((v >= 65 && v <= 90) || (v >= 97 && v <= 122))
+		return (1);
+	else
+		return (0);
 }

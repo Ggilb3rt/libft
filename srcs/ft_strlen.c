@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:11:43 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/07 18:44:55 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/07 18:53:13 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/07 19:07:19 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, size_t n)
+size_t	strlen(const char *s)
 {
-	const char *ps;
+	size_t count;
 
-	ps = s;
-	while (n--)
+	count = 0;
+	while(*s)
 	{
-		if (*ps != c)
-			ps++;
-		else
-			return ((void *)ps);
+		count++;
+		s++;
 	}
-	return (0);
+	return (count);
 }
