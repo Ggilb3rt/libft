@@ -6,16 +6,16 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 19:07:49 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/07 19:21:42 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/08 13:32:31 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		isalpha(int c)
+int		ft_isalpha(int c)
 {
-	char *v;
+	unsigned char v;
 
 	v = c;
-	if ((v >= 65 && v <= 90) || (v >= 97 && v <= 122))
+	if ((v >= 'a' && v <= 'z') || (v >= 'A' && v <= 'Z'))
 		return (1);
 	else
 		return (0);

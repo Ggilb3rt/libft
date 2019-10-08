@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 11:05:48 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/08 13:07:30 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/08 10:10:16 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/08 13:37:55 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *b, int c, size_t len)
+int		ft_toupper(int c)
 {
-	unsigned char	*p;
+	unsigned char v;
 
-	p = b;
-	while (len > 0)
+	v = c;
+	if (v >= 97 && v <= 122)
 	{
-		*p = c;
-		p++;
-		len--;
+		v -= 32;
+		return (v);
 	}
-	return (b);
+	else
+		return (v);
 }

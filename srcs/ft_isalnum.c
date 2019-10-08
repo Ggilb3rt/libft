@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 11:05:48 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/08 13:07:30 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/08 09:42:28 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/08 13:42:40 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *b, int c, size_t len)
+int		ft_isalnum(int c)
 {
-	unsigned char	*p;
-
-	p = b;
-	while (len > 0)
-	{
-		*p = c;
-		p++;
-		len--;
-	}
-	return (b);
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	else
+		return (0);
 }
