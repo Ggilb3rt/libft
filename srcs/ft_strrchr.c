@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:11:43 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/08 13:59:04 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/08 15:23:49 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/08 15:52:32 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strrchr(const char *s, int c)
 {
-	const char *ps;
+	unsigned char	ch;
+	char			*temp;
+	int				find;
 
-	ps = s;
-	while (n--)
+	ch = c;
+	temp = (char *)s;
+	find = 0;
+	while (*s)
 	{
-		if (*ps != c)
-			ps++;
+		if (*s == ch)
+		{
+			find = 1;
+			temp = (char *)s;
+			s++;
+		}
 		else
-			return ((void *)ps);
+			s++;
 	}
-	return (0);
+	if (ch == '\0')
+		return ((char *)s);
+	if (find)
+		return (temp);
+	else
+		return (0);
 }
