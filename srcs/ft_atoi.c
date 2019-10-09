@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 17:37:17 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/09 16:55:19 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/09 14:41:17 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/09 15:06:00 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int	ft_atoi(const char *str)
 {
-	size_t	srcl;
-	size_t	dstl;
+	int	res;
+	int	sign;
 
-	srcl = ft_strlen(src);
-	dstl = ft_strlen(dst);
-	
-	while (*src && dstsize > 1)
+	sign = 1;
+	res = 0;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str++ == '-')
+		sign *= -1;
+	while (ft_isdigit(*str) && *str)
 	{
-		*dst++ = *src++;
-		dstsize--;
+		res = res * 10 + ((char)*str - '0');
+		str++;
 	}
-	if (dstsize > 0)
-		*dst = '\0';
-	return (srcl);
+	return (res);
 }
