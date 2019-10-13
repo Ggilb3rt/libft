@@ -6,7 +6,7 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 12:36:52 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/13 19:34:02 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/13 20:29:43 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ int		ft_getlen(char const *s, char c)
 	int	i;
 
 	i = 0;
-	while (*s++ != c)
+	while (*s != c && *s)
+	{
+		s++;
 		i++;
+	}
 	return (i);
 }
 
@@ -54,16 +57,16 @@ char	**ft_split(char const *s, char c)
 	while (*s)
 	{
 		len = ft_getlen(s, c);
-		if (!(*(tab + i) = (char *)malloc(sizeof(char) * len + 1))) //tab[nbc][len]
+		if (!(*(tab + i) = (char *)malloc(sizeof(tab) * len + 1))) //tab[nbc][len]
 	   		return (0);
-		while (*s != c)
+		while (*s != c && *s)
 		{
 			ft_strlcpy(*(tab + i), s, len + 1);
-			printf("%s", *(tab + i));
+			printf("tab + %d = %s\n", i, *(tab + i));
 			//tab++;
 			s = s + len;
 		}
-
+		printf("boucle exterieur\n");
 		i++;
 		s++;
 	}
@@ -72,10 +75,16 @@ char	**ft_split(char const *s, char c)
 
 int main()
 {
-	char const *s = "qd1ssdfd1efdfce1gesdf";
+	char const *s = "ab1cdefg1hijk1lmnopqr";
 	char		c = '1';
 	char		**ret;
-	
+	int			i = 0;
+
+	printf("s = %s\n", s);
 	ret = ft_split(s, c);
-	printf("\nres = %s", *ret);
+	while (i < 5)
+	{
+		printf("\nres[%d] = %s", i, *(ret+i));
+		i++;
+	}
 }
