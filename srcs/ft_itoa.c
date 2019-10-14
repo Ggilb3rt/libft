@@ -6,9 +6,12 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 12:22:25 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/13 16:05:22 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/14 14:01:47 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
+#include <stdlib.h>
 
 size_t	ft_intl(int n, size_t len)
 {
@@ -40,13 +43,14 @@ char	*ft_strrev(char *s, size_t len)
 		s[i] = temp[i];
 		i++;
 	}
+	s[i] = '\0';
 	return (s);
 }
 
 char	*ft_itoa(int n)
 {
 	char	*s;
-	int		res;
+	long	res;
 	int		isneg;
 	size_t	nlen;
 
@@ -54,36 +58,30 @@ char	*ft_itoa(int n)
 	isneg = 0;
 	nlen = ft_intl(n, 0);
 	if (n < 0)
-	{
-		isneg = 1;
-		nlen++;
-	}
+		isneg = nlen++;
 	if (!(s = malloc((sizeof(*s) * nlen + 1))))
 		return (0);
 	if (n == 0)
-	{
-		*s = '0';
-		s++;
-		*s = '\0';
-		return (--s);
-	}
-
+		*s++ = '0';
 	while (n != 0)
 	{
 		res = n % 10;
 		if (isneg)
 			res *= -1;
-		*s = res + '0';
-		s++;
-		n = n / 10;
+		*s++ = res + '0';
+		n /= 10;
 	}
 	if (isneg)
-	{
-		*s = '-';
-		s++;
-	}
-	*s = '\0';
-	s = s - nlen;
-	ft_strrev(s, nlen);
-	return (s);
+		*s++ = '-';
+	ft_strrev(s - nlen, nlen);
+	return (s - nlen);
+}
+
+int main()
+{
+	int n = 2147483647;
+	char *s;
+
+	s = ft_itoa(n);
+	printf("%s", s);
 }

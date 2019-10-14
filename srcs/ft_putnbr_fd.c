@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 11:13:02 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 12:46:57 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/14 11:25:43 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/14 11:40:20 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	srcl;
-	size_t	dstl;
+	long	nb;
 
-	srcl = ft_strlen(src);
-	dstl = ft_strlen(dst);
-	if (dstsize > dstl)
+	nb = n;
+	if (nb < 0)
 	{
-		while (*dst)
-		{
-			dst++;
-			dstsize--;
-		}
-		while (*src && dstsize > 1)
-		{
-			*dst = *src;
-			dst++;
-			src++;
-			dstsize--;
-		}
-		*dst = '\0';
-		return (srcl + dstl);
+		ft_putchar_fd('-', fd);
+		nb *= -1;
 	}
-	else
-		return (srcl + dstsize);
+	if (nb >= 10)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putchar_fd(nb % 10 + '0', fd);
+	}
+	if (nb < 10)
+		ft_putchar_fd(nb % 10 + '0', fd);
 }
