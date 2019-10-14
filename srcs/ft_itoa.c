@@ -6,12 +6,11 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 12:22:25 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 14:01:47 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/14 18:17:24 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <libft.h>
 
 size_t	ft_intl(int n, size_t len)
 {
@@ -47,6 +46,17 @@ char	*ft_strrev(char *s, size_t len)
 	return (s);
 }
 
+long	ft_calc(int n)
+{
+	long	res;
+
+	res = 0;
+	res = n % 10;
+	if (res < 0)
+		res *= -1;
+	return (res);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*s;
@@ -65,9 +75,7 @@ char	*ft_itoa(int n)
 		*s++ = '0';
 	while (n != 0)
 	{
-		res = n % 10;
-		if (isneg)
-			res *= -1;
+		res = ft_calc(n);
 		*s++ = res + '0';
 		n /= 10;
 	}
@@ -75,13 +83,4 @@ char	*ft_itoa(int n)
 		*s++ = '-';
 	ft_strrev(s - nlen, nlen);
 	return (s - nlen);
-}
-
-int main()
-{
-	int n = 2147483647;
-	char *s;
-
-	s = ft_itoa(n);
-	printf("%s", s);
 }

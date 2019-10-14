@@ -6,9 +6,11 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:02:32 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/09 18:13:24 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/14 17:10:07 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <libft.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

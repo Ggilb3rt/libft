@@ -6,9 +6,11 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 12:36:52 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 10:20:41 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/14 17:22:19 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <libft.h>
 
 int		ft_countc(char const *s, char c)
 {
@@ -56,7 +58,7 @@ char	**ft_split(char const *s, char c)
 			return (0);
 		if (*s != c && *s)
 		{
-			strlcpy(*(tab + i), s, len + 1);
+			ft_strlcpy(*(tab + i), s, len + 1);
 			s = s + len;
 		}
 		i++;

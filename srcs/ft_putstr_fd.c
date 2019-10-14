@@ -6,9 +6,11 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 11:04:51 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 11:19:44 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/14 17:02:25 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <libft.h>
 
 void	ft_putstr_fd(char *s, int fd)
 {

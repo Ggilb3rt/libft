@@ -6,9 +6,11 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 16:35:30 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/09 17:01:47 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/14 17:03:39 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <libft.h>
 
 char	*ft_strdup(const char *s1)
 {

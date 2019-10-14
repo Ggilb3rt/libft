@@ -6,9 +6,11 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 17:37:17 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/09 18:12:15 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/14 17:05:20 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <libft.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

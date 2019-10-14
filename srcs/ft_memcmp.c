@@ -6,9 +6,11 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 19:28:29 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/08 13:07:51 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/14 16:59:22 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <libft.h>
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
