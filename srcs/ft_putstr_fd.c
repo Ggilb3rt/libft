@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 11:13:02 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 12:46:57 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/14 11:04:51 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/14 11:19:44 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	srcl;
-	size_t	dstl;
-
-	srcl = ft_strlen(src);
-	dstl = ft_strlen(dst);
-	if (dstsize > dstl)
+	while (*s)
 	{
-		while (*dst)
-		{
-			dst++;
-			dstsize--;
-		}
-		while (*src && dstsize > 1)
-		{
-			*dst = *src;
-			dst++;
-			src++;
-			dstsize--;
-		}
-		*dst = '\0';
-		return (srcl + dstl);
+		ft_putchar_fd(*s, fd);
+		s++;
 	}
-	else
-		return (srcl + dstsize);
 }

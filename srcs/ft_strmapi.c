@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 11:13:02 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 12:46:57 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/14 10:21:02 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/14 13:51:31 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	srcl;
-	size_t	dstl;
+	char			*new;
+	unsigned int	i;
+	size_t			slen;
 
-	srcl = ft_strlen(src);
-	dstl = ft_strlen(dst);
-	if (dstsize > dstl)
+	i = 0;
+	slen = ft_strlen(s);
+	if (!(new = malloc(sizeof(*new) * slen + 1)))
+		return (0);
+	while (*s)
 	{
-		while (*dst)
-		{
-			dst++;
-			dstsize--;
-		}
-		while (*src && dstsize > 1)
-		{
-			*dst = *src;
-			dst++;
-			src++;
-			dstsize--;
-		}
-		*dst = '\0';
-		return (srcl + dstl);
+		new[i] = (*f)(i, *s);
+		i++;
+		s++;
 	}
-	else
-		return (srcl + dstsize);
+	return (new);
 }
