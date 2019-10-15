@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 17:02:32 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 17:10:07 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/09 15:08:57 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/15 14:09:31 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	*c;
+	void *obj;
 
-	if (!*s || ft_strlen(s) < start)
+	if (!(obj = malloc(count * size)))
 		return (0);
-	while (start--)
-		s++;
-	if (!(c = malloc(len * sizeof(*c))))
-		return (0);
-	ft_strlcpy(c, s, len);
-	return (c);
+	ft_bzero(obj, count * size);
+	return (obj);
 }
