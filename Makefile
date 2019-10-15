@@ -33,21 +33,20 @@ SRCS	= srcs/ft_atoi.c \
 		  	srcs/ft_strtrim.c \
 		  	srcs/ft_substr.c \
 		  	srcs/ft_tolower.c \
-		  	srcs/ft_toupper.c \
-SRC		= ${wildcard srcs/*.c}
-OBJS	= ${SRCS:.c=.o}
-HEADER	= includes/
+		  	srcs/ft_toupper.c
+OBJS	= $(SRCS:.c=.o)
+HEADER	= includes
 FLAG	= -Wall -Werror -Wextra
 CC		= gcc
 
-${NAME}:	${OBJS}
-			ar rc ${NAME} ${OBJS}
-			ranlib ${NAME}
-all:		${NAME}
+$(NAME):	$(OBJS)
+			ar rc $(NAME) $(OBJS)
+			ranlib $(NAME)
+all:		$(NAME)
 %.o: %.c
-			@${CC} -c ${FLAG} -I ${HEADER} $< -o $@
+			@$(CC) $(FLAG) -c -o $@ $< -I $(HEADER)
 clean:
-			rm -f ${OBJS}
+			rm -f $(OBJS)
 fclean:	clean
-			rm -f ${NAME}
+			rm -f $(NAME)
 re:		fclean all

@@ -6,11 +6,11 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 11:05:48 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 17:00:19 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/15 12:42:06 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {
@@ -23,5 +23,5 @@ void	*ft_memset(void *b, int c, size_t len)
 		p++;
 		len--;
 	}
-	return (p);
+	return (b);
 }
