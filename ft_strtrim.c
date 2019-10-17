@@ -6,7 +6,7 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 09:28:09 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/16 10:56:13 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/17 13:25:05 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,17 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	s1l = ft_strlen(s1);
 	first = ft_get_first(s1, set);
-	if (first >= s1l)
-		return (NULL);
 	last = ft_get_last(s1, set);
 	final = s1l - first - last;
+	if (first >= s1l)
+		final = 1;
 	if (!(c = malloc((final) * sizeof(*c) + 1)))
 		return (NULL);
+	if (first >= s1l)
+	{
+		c[0] = '\0';
+		return (c);
+	}
 	s1 += first;
 	ft_strlcpy(c, s1, final + 1);
 	return (c);
