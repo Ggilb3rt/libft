@@ -34,11 +34,11 @@ SRCS	= ft_atoi.c \
 		  	ft_substr.c \
 		  	ft_tolower.c \
 		  	ft_toupper.c
-BONUSSRC = ft_lstadd_back_bonus.c \
-			ft_lstnew_bonus.c \
-			ft_lstadd_front_bonus.c \
-			ft_lstlast_bonus.c \
-			ft_lstsize_bonus.c
+BONUSSRC = ft_lstadd_back.c \
+			ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstlast.c \
+			ft_lstsize.c
 OBJS	= $(SRCS:.c=.o)
 BONUSOBJ = $(BONUSSRC:.c=.o)
 FLAG	= -Wall -Werror -Wextra
@@ -48,7 +48,7 @@ $(NAME):	$(OBJS)
 			ar rc $(NAME) $(OBJS)
 			ranlib $(NAME)
 all:		$(NAME)
-bonus:		$(BONUSOBJ) $(OBJS)
+bonus::		$(BONUSOBJ) $(OBJS)
 			ar rc $(NAME) $(OBJS) $(BONUSOBJ)
 			ranlib $(NAME)
 %.o: %.c

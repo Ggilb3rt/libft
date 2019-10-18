@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 12:55:53 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/16 18:09:19 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/17 14:43:26 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/18 14:22:54 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	len;
+	t_list	*tmp;
+	t_list	*nxt;
 
-	len = ft_lstsize(lst);
-	while (len > 1)
+	if (*lst && lst && del)
 	{
-		lst = lst->next;
-		len--;
+		tmp = *lst;
+		while (tmp)
+		{
+			nxt = tmp->next;
+			ft_lstdelone(tmp, del);
+			tmp = nxt;
+		}
+		*lst = 0;
 	}
-	return (lst);
 }
