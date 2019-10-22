@@ -6,7 +6,7 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 17:37:17 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 17:05:20 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/22 13:09:35 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	srcl;
 
+	if (!src || !dst)
+		return (0);
 	srcl = ft_strlen(src);
 	while (*src && dstsize > 1)
 	{

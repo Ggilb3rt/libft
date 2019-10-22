@@ -6,7 +6,7 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 10:10:16 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 17:10:44 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/22 11:56:22 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,8 @@
 
 int		ft_toupper(int c)
 {
-	unsigned char v;
-
-	v = c;
-	if (v >= 97 && v <= 122)
-	{
-		v -= 32;
-		return (v);
-	}
+	if (c >= 'a' && c <= 'z')
+		return (c - 'a' + 'A');
 	else
-		return (v);
+		return (c);
 }

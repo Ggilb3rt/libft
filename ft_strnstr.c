@@ -6,7 +6,7 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 12:36:40 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/18 13:04:12 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/22 13:21:28 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	char	*pattern;
 	size_t	c;
 
+	if (!haystack || !needle)
+		return (0);
 	while (*haystack && len)
 	{
 		start = (char*)haystack;
