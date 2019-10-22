@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 16:35:30 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/22 14:15:37 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/22 14:36:26 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/22 16:24:04 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*c;
-	size_t	s1l;
+	t_list	*newlst;
+	t_list	*tmp;
+	t_list	*tmpd;
 
-	if (!s1)
-		s1l = 0;
+	if (lst && f && del)
+	{
+		newlst = ft_lstnew(f(lst->content));
+		tmpd = newlst;
+		lst = lst->next;
+		while (lst)
+		{
+			tmp = ft_lstnew(f(lst->content));
+			if (!tmp)
+				del(tmp);
+			tmpd->next = tmp;
+			tmpd = tmp;
+			lst = lst->next;
+		}
+		return (newlst);
+	}
 	else
-		s1l = ft_strlen(s1);
-	if (!(c = (char*)malloc((s1l + 1) * sizeof(*c))))
 		return (0);
-	ft_strlcpy(c, s1, s1l + 1);
-	return (c);
 }

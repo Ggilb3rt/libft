@@ -39,7 +39,10 @@ BONUSSRC = ft_lstadd_back.c \
 			ft_lstadd_front.c \
 			ft_lstlast.c \
 			ft_lstsize.c \
-			ft_lstclear.c
+			ft_lstclear.c \
+			ft_lstdelone.c \
+			ft_lstiter.c \
+			ft_lstmap.c
 OBJS	= $(SRCS:.c=.o)
 BONUSOBJ = $(BONUSSRC:.c=.o)
 FLAG	= -Wall -Werror -Wextra
@@ -49,7 +52,7 @@ $(NAME):	$(OBJS)
 			ar rc $(NAME) $(OBJS)
 			ranlib $(NAME)
 all:		$(NAME)
-bonus::		$(BONUSOBJ) $(OBJS)
+bonus:		$(BONUSOBJ) $(OBJS)
 			ar rc $(NAME) $(OBJS) $(BONUSOBJ)
 			ranlib $(NAME)
 %.o: %.c
