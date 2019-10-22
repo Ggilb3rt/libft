@@ -6,7 +6,7 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 09:56:29 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 16:57:33 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/22 20:49:50 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int		ft_isprint(int c)
 {
-	unsigned char v;
-
-	v = c;
-	if (v >= 32 && v <= 126)
+	if (c >= 32 && c <= 126)
 		return (1);
 	else
 		return (0);

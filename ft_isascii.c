@@ -6,7 +6,7 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 09:49:44 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/14 16:56:34 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/22 20:48:57 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int		ft_isascii(int c)
 {
-	unsigned char v;
-
-	v = c;
-	if (v >= 0 && v <= 127)
+	if (c >= 0 && c <= 127)
 		return (1);
 	else
 		return (0);
