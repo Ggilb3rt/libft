@@ -6,7 +6,7 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:41:17 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/22 13:40:15 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/23 10:05:47 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	ft_atoi(const char *str)
 
 	sign = 1;
 	res = 0;
-	if (!str)
-		return (0);
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
 	if (*str == '+' || *str == '-')

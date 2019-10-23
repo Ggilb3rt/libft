@@ -6,7 +6,7 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 15:23:49 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/22 13:45:19 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/23 09:23:01 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*ft_strrchr(const char *s, int c)
 
 	temp = (char *)s;
 	find = 0;
-	if (!s)
-		return (0);
 	while (*s)
 	{
 		if (*s == (unsigned char)c)
