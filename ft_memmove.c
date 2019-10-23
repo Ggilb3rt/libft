@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 17:14:37 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/23 10:57:42 by ggilbert         ###   ########.fr       */
+/*   Created: 2019/10/23 18:02:42 by ggilbert          #+#    #+#             */
+/*   Updated: 2019/10/23 18:26:55 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,23 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*pdst;
-	unsigned char	temp[len];
-	unsigned char	*psrc;
-	size_t			base_len;
-	size_t			i;
+	unsigned char	*pd;
+	unsigned char	*ps;
+	unsigned int	i;
 
 	if (!dst && !src)
 		return (0);
-	pdst = (unsigned char *)dst;
-	psrc = (unsigned char *)src;
-	base_len = len;
+	pd = (unsigned char*)dst;
+	ps = (unsigned char*)src;
 	i = 0;
-	while (len > 0)
-	{
-		temp[i] = psrc[i];
-		i++;
-		len--;
-	}
-	i = 0;
-	while (i < base_len)
-	{
-		pdst[i] = temp[i];
-		i++;
-	}
+	if (ps < pd)
+		while (len-- > 0)
+			pd[len] = ps[len];
+	else
+		while (i < len)
+		{
+			pd[i] = ps[i];
+			i++;
+		}
 	return (dst);
 }

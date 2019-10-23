@@ -6,7 +6,7 @@
 /*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 15:08:57 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/23 09:40:10 by ggilbert         ###   ########.fr       */
+/*   Updated: 2019/10/23 17:55:24 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void *obj;
+	void	*obj;
 
+	if (!(count * size))
+		return (ft_strdup(""));
 	if (!(obj = malloc(count * size)))
 		return (NULL);
 	ft_bzero(obj, count * size);
