@@ -33,7 +33,9 @@ SRCS	= ft_atoi.c \
 		  	ft_strtrim.c \
 		  	ft_substr.c \
 		  	ft_tolower.c \
-		  	ft_toupper.c
+		  	ft_toupper.c \
+			get_next_line.c \
+			ft_newstr.c
 BONUSSRC = ft_lstadd_back.c \
 			ft_lstnew.c \
 			ft_lstadd_front.c \

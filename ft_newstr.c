@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_newstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 11:55:14 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/18 12:03:54 by ggilbert         ###   ########.fr       */
+/*   Created: 2021/02/04 18:52:52 by ggilbert          #+#    #+#             */
+/*   Updated: 2021/02/04 18:53:15 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+char	*ft_newstr(size_t size)
 {
-	if (lst && f)
-	{
-		while (lst)
-		{
-			f(lst->content);
-			lst = lst->next;
-		}
-	}
+	char	*str;
+
+	if (!(str = malloc(sizeof(char) * size + 1)))
+		return (0);
+	while ((int)size-- >= 0)
+		*(str + size + 1) = '\0';
+	return (str);
 }
