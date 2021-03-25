@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 15:05:38 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/02/04 18:53:35 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/03/25 11:54:36 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,7 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 int					get_next_line(int fd, char **line);
 char				*ft_newstr(size_t size);
+int					ft_check_file_extention(char *av, const char *ext);
+void				ft_split_free(void **splited);
+size_t				ft_splitted_length(char **splitted);
 #endif

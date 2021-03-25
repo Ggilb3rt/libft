@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggilbert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 12:36:52 by ggilbert          #+#    #+#             */
-/*   Updated: 2019/10/16 17:14:11 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/02/22 19:49:52 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,11 @@ char	*w_malloc(char *s, char c)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char	*process(char *sn, char c, char **tab)
 {
-	char	**tab;
-	char	*sn;
-	int		i;
+	int	i;
 
 	i = 0;
-	sn = ft_strtrim(s, &c);
-	if (!sn)
-		return (NULL);
-	if (!(tab = (char **)malloc(sizeof(s) * (ft_countc(sn, c) + 2))))
-		return (NULL);
 	while (*sn)
 	{
 		if (*sn != c && *sn)
@@ -77,5 +70,22 @@ char	**ft_split(char const *s, char c)
 			sn++;
 	}
 	tab[i] = NULL;
+	return (sn);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**tab;
+	char	*sn;
+	int		i;
+
+	i = 0;
+	sn = ft_strtrim(s, &c);
+	if (!sn)
+		return (NULL);
+	if (!(tab = (char **)malloc(sizeof(s) * (ft_countc(sn, c) + 2))))
+		return (NULL);
+	process(sn, c, tab);
+	free(sn);
 	return (tab);
 }
