@@ -18,13 +18,13 @@ size_t	ft_get_first(char const *s1, char const *set)
 	char	*pattern;
 
 	i = 0;
-	pattern = (char*)set;
+	pattern = (char *)set;
 	while (*s1)
 	{
 		if (*pattern == *s1)
 		{
 			s1++;
-			pattern = (char*)set;
+			pattern = (char *)set;
 			i++;
 		}
 		else if (*pattern)
@@ -45,14 +45,14 @@ size_t	ft_get_last(char const *s1, char const *set)
 
 	i = 0;
 	s1l = ft_strlen(s1);
-	pattern = (char*)set;
+	pattern = (char *)set;
 	s1 += s1l - 1;
 	while (s1l--)
 	{
 		if (*pattern == *s1)
 		{
 			s1--;
-			pattern = (char*)set;
+			pattern = (char *)set;
 			i++;
 		}
 		else if (*pattern)
@@ -79,7 +79,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	final = s1l - first - last;
 	if (first >= s1l)
 		final = 1;
-	if (!(c = malloc((final) * sizeof(*c) + 1)))
+	c = malloc((final) * sizeof(*c) + 1);
+	if (c == NULL)
 		return (NULL);
 	if (first >= s1l)
 	{

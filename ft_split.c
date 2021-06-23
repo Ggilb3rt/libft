@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_countc(char const *s, char c)
+int	ft_countc(char const *s, char c)
 {
 	int	i;
 
@@ -39,7 +39,8 @@ char	*w_malloc(char *s, char c)
 	i = 0;
 	while (s[i] != '\0' && s[i] != c)
 		i++;
-	if (!(word = (char *)malloc(sizeof(char) * (i + 1))))
+	word = (char *)malloc(sizeof(char) * (i + 1));
+	if (word == NULL)
 		return (NULL);
 	i = 0;
 	while (s[i] != '\0' && s[i] != c)
@@ -60,7 +61,8 @@ char	*process(char *sn, char c, char **tab)
 	{
 		if (*sn != c && *sn)
 		{
-			if (!(tab[i] = w_malloc(sn, c)))
+			tab[i] = w_malloc(sn, c);
+			if (tab[i] == NULL)
 				return (NULL);
 			i++;
 			while (*sn && *sn != c)
@@ -83,7 +85,8 @@ char	**ft_split(char const *s, char c)
 	sn = ft_strtrim(s, &c);
 	if (!sn)
 		return (NULL);
-	if (!(tab = (char **)malloc(sizeof(s) * (ft_countc(sn, c) + 2))))
+	tab = (char **)malloc(sizeof(s) * (ft_countc(sn, c) + 2));
+	if (tab == NULL)
 		return (NULL);
 	process(sn, c, tab);
 	free(sn);

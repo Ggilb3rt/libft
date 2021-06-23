@@ -21,7 +21,7 @@ char	*ft_clear(char *ptr)
 
 char	*properjoin(char *s1, char *s2)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = s1;
 	s1 = ft_strjoin(s1, s2);
@@ -35,7 +35,8 @@ char	*nintxt(char **txt, int *n)
 	char	*line;
 	char	*tmp;
 
-	if ((ptrn = ft_strchr(*txt, '\n')))
+	ptrn = ft_strchr(*txt, '\n');
+	if (ptrn)
 	{
 		*ptrn = '\0';
 		line = ft_strdup(*txt);
@@ -61,7 +62,8 @@ char	*freshchar(int fd, int *n, char *line, char **txt)
 	while ((*n = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[*n] = '\0';
-		if ((ptrn = ft_strchr(buff, '\n')))
+		ptrn = ft_strchr(buff, '\n');
+		if (ptrn)
 		{
 			*ptrn = '\0';
 			line = properjoin(line, buff);
@@ -77,29 +79,31 @@ char	*freshchar(int fd, int *n, char *line, char **txt)
 	return (line);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*txt;
 	int			ret;
-	int			*n;
 
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	ret = 1;
-	n = &ret;
 	if (txt)
-		*line = nintxt(&txt, n);
+		*line = nintxt(&txt, &ret);
 	else
 	{
-		if (!(*line = ft_newstr(0)))
+		*line = ft_newstr(0);
+		if (!(*line))
 			return (-1);
 	}
 	if (ret)
 	{
-		*line = freshchar(fd, n, *line, &txt);
+		*line = freshchar(fd, &ret, *line, &txt);
 		if (ret == 0 && txt)
 			txt = ft_clear(txt);
-		return (ret > 0 ? 1 : ret);
+		if (ret > 0)
+			return (1);
+		else
+			return (ret);
 	}
 	return (1);
 }

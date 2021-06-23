@@ -20,8 +20,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	while (*haystack && len)
 	{
-		start = (char*)haystack;
-		pattern = (char*)needle;
+		start = (char *)haystack;
+		pattern = (char *)needle;
 		c = len;
 		while (*haystack && *pattern && *haystack == *pattern && c)
 		{
@@ -35,6 +35,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		len--;
 	}
 	if (!*needle)
-		return ((char*)haystack);
+		return ((char *)haystack);
 	return (0);
 }

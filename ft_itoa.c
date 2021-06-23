@@ -24,12 +24,15 @@ size_t	ft_intl(int n, size_t len)
 
 char	*ft_strrev(char *s, size_t len)
 {
-	char	temp[len];
+	char	*temp;
 	size_t	base_len;
 	size_t	i;
 
 	i = 0;
 	base_len = len;
+	temp = malloc(sizeof(char) * len + 1);
+	if (temp == NULL)
+		return (NULL);
 	while (len > 0)
 	{
 		temp[i] = s[len - 1];
@@ -43,6 +46,7 @@ char	*ft_strrev(char *s, size_t len)
 		i++;
 	}
 	s[i] = '\0';
+	free(temp);
 	return (s);
 }
 
@@ -69,7 +73,8 @@ char	*ft_itoa(int n)
 	nlen = ft_intl(n, 0);
 	if (n < 0)
 		isneg = nlen++;
-	if (!(s = malloc((sizeof(*s) * nlen + 1))))
+	s = malloc((sizeof(*s) * nlen + 1));
+	if (s == NULL)
 		return (0);
 	if (n == 0)
 		*s++ = '0';

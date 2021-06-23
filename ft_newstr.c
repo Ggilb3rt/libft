@@ -16,7 +16,8 @@ char	*ft_newstr(size_t size)
 {
 	char	*str;
 
-	if (!(str = malloc(sizeof(char) * size + 1)))
+	str = malloc(sizeof(char) * size + 1);
+	if (str == NULL)
 		return (0);
 	while ((int)size-- >= 0)
 		*(str + size + 1) = '\0';

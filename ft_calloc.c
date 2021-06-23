@@ -18,7 +18,8 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (!(count * size))
 		return (ft_strdup(""));
-	if (!(obj = malloc(count * size)))
+	obj = malloc(count * size);
+	if (obj == NULL)
 		return (NULL);
 	ft_bzero(obj, count * size);
 	return (obj);
