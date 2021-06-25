@@ -21,6 +21,12 @@
 # include <sys/uio.h>
 # include <fcntl.h>
 
+typedef enum e_bool
+{
+	false = 0,
+	true = 1
+}				t_bool;
+
 typedef struct s_list
 {
 	void			*content;
