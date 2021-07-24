@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 12:36:52 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/02/22 19:49:52 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/13 09:41:30 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,7 @@ char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	char	*sn;
-	int		i;
 
-	i = 0;
 	sn = ft_strtrim(s, &c);
 	if (!sn)
 		return (NULL);
