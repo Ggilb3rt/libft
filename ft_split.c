@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 12:36:52 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/13 09:41:30 by ggilbert         ###   ########.fr       */
+/*   Updated: 2022/02/01 17:18:25 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*w_malloc(char *s, char c)
 	return (word);
 }
 
-char	*process(char *sn, char c, char **tab)
+char	*process(char *sn, char c, char **arr)
 {
 	int	i;
 
@@ -61,8 +61,8 @@ char	*process(char *sn, char c, char **tab)
 	{
 		if (*sn != c && *sn)
 		{
-			tab[i] = w_malloc(sn, c);
-			if (tab[i] == NULL)
+			arr[i] = w_malloc(sn, c);
+			if (arr[i] == NULL)
 				return (NULL);
 			i++;
 			while (*sn && *sn != c)
@@ -71,22 +71,46 @@ char	*process(char *sn, char c, char **tab)
 		if (*sn != '\0')
 			sn++;
 	}
-	tab[i] = NULL;
+	arr[i] = NULL;
 	return (sn);
+}
+
+char	*char_to_string(char c)
+{
+	char	*s;
+
+	s = malloc(sizeof(char) * 2);
+	if (!s)
+		return (NULL);
+	s[0] = c;
+	s[1] = '\0';
+	return (s);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**tab;
+	char	**arr;
 	char	*sn;
+	char	*set;
 
-	sn = ft_strtrim(s, &c);
+	set = char_to_string(c);
+	if (!set)
+		return (NULL);
+	sn = ft_strtrim(s, set);
 	if (!sn)
+	{
+		free(set);
 		return (NULL);
-	tab = (char **)malloc(sizeof(s) * (ft_countc(sn, c) + 2));
-	if (tab == NULL)
+	}
+	arr = (char **)malloc(sizeof(s) * (ft_countc(sn, c) + 2));
+	if (arr == NULL)
+	{
+		free(sn);
+		free(set);
 		return (NULL);
-	process(sn, c, tab);
+	}
+	process(sn, c, arr);
 	free(sn);
-	return (tab);
+	free(set);
+	return (arr);
 }
