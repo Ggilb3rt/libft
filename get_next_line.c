@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:19:21 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/02/04 18:54:13 by ggilbert         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:55:29 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,18 @@ char	*freshchar(int fd, int *n, char *line, char **txt)
 	return (line);
 }
 
-int	get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line, int quick_quit)
 {
 	static char	*txt;
 	int			ret;
 
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
+	if (quick_quit && txt != NULL)
+	{
+		free(txt);
+		return (-1);
+	}
 	ret = 1;
 	if (txt)
 		*line = nintxt(&txt, &ret);
