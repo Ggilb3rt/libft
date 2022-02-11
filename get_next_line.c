@@ -6,18 +6,11 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:19:21 by ggilbert          #+#    #+#             */
-/*   Updated: 2022/02/04 16:55:29 by ggilbert         ###   ########.fr       */
+/*   Updated: 2022/02/11 11:50:38 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_clear(char *ptr)
-{
-	free(ptr);
-	ptr = NULL;
-	return (ptr);
-}
 
 char	*properjoin(char *s1, char *s2)
 {
@@ -59,7 +52,8 @@ char	*freshchar(int fd, int *n, char *line, char **txt)
 	char	*ptrn;
 
 	buff = ft_newstr(BUFFER_SIZE);
-	while ((*n = read(fd, buff, BUFFER_SIZE)) > 0)
+	*n = read(fd, buff, BUFFER_SIZE);
+	while (*n > 0)
 	{
 		buff[*n] = '\0';
 		ptrn = ft_strchr(buff, '\n');
@@ -74,10 +68,26 @@ char	*freshchar(int fd, int *n, char *line, char **txt)
 			break ;
 		}
 		line = properjoin(line, buff);
+		*n = read(fd, buff, BUFFER_SIZE);
 	}
 	buff = ft_clear(buff);
 	return (line);
 }
+
+int	add_new_char(int fd, int *ret, char **line, char **txt)
+{
+	if (*ret)
+	{
+		*line = freshchar(fd, ret, *line, txt);
+		if (*ret == 0 && *txt)
+			*txt = ft_clear(*txt);
+		if (*ret > 0)
+			return (1);
+		else
+			return (*ret);
+	}
+	return (1);
+}	
 
 int	get_next_line(int fd, char **line, int quick_quit)
 {
@@ -100,15 +110,7 @@ int	get_next_line(int fd, char **line, int quick_quit)
 		if (!(*line))
 			return (-1);
 	}
-	if (ret)
-	{
-		*line = freshchar(fd, &ret, *line, &txt);
-		if (ret == 0 && txt)
-			txt = ft_clear(txt);
-		if (ret > 0)
-			return (1);
-		else
-			return (ret);
-	}
+	if (add_new_char(fd, &ret, line, &txt) != 1)
+		return (ret);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 15:05:38 by ggilbert          #+#    #+#             */
-/*   Updated: 2022/02/04 16:55:44 by ggilbert         ###   ########.fr       */
+/*   Updated: 2022/02/11 11:51:23 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ char				*ft_newstr(size_t size);
 int					ft_check_file_extention(char *av, const char *ext);
 void				ft_split_free(void **splited);
 size_t				ft_splitted_length(char **splitted);
+char				*ft_clear(char *ptr);
 #endif
